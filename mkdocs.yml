@@ -1,0 +1,91 @@
+site_name: JH Docs
+site_url: https://docs.j-harrison.co.uk
+site_description: A collection of my findings throught my home labbing experience
+copyright: Made with ❤️ by J Harrison
+
+repo_name: JoeHarrison94
+repo_url: https://github.com/Joeharrison94/terraform-gcp-ubuntu-container-ready-e2-micro-vm
+edit_uri: ""
+
+theme:
+  name: material
+  language: en
+  logo: assets/portal.png
+  favicon: assets/favicon.png
+  include_search_page: false
+  search_index_only: true
+  palette:
+    - media: "(prefers-color-scheme: dark)"  # Dark Mode
+      scheme: slate
+      primary: teal
+      accent: orange
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: light)"  # Light mode
+      scheme:  default
+      primary: teal
+      accent: orange
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+  features:
+    - toc.integrate
+    - navigation.top
+    - navigation.expand
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.sections
+    - content.tabs.link
+
+extra:
+  homepage: /
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/JoeHarrison94
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+
+markdown_extensions:
+  - admonition
+  - meta
+  - attr_list
+  - md_in_html
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      extend_pygments_lang:
+        - name: php-inline
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+nav:
+- "Welcome": index.md
+- "Tutorials":
+  - "Google Cloud Platform - Free Forever VM Setup & Configuration": gcp-free-forever.md
+  - "Cloudflared Argo Tunnels with Zero Trust": cloudflared.md
+  - "Install KVM (Kernel-Based Virtualization) On Ubuntu Server": kvm-ubuntu.md
+  - "Markdown Cheatsheet For MkDocs": mkdocs-cheatsheet.md
