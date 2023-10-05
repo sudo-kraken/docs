@@ -1,15 +1,16 @@
 site_name: JH Docs
-site_url: https://docs.j-harrison.co.uk
+site_url: "https://joeharrison94.github.io/"
 site_description: A collection of my findings throught my home labbing experience
 copyright: Made with ❤️ by J Harrison
 
 repo_name: JoeHarrison94
 repo_url: https://github.com/Joeharrison94/terraform-gcp-ubuntu-container-ready-e2-micro-vm
-edit_uri: ""
+edit_uri: "Docs/"
 
 theme:
   name: material
   language: en
+  custom_dir: docs/_overrides
   logo: assets/portal.png
   favicon: assets/favicon.png
   include_search_page: false
@@ -41,7 +42,7 @@ theme:
     - content.tabs.link
 
 extra:
-  homepage: /
+  homepage: /Docs/
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/JoeHarrison94
