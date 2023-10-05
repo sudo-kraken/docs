@@ -1,0 +1,67 @@
+# Name of the workflow
+name: Build and Deploy MkDocs
+
+# Define the events that trigger the workflow
+on:
+  # Trigger the workflow when someone makes a push to the main branch
+  push:
+    branches:
+      - main
+      
+# Define permissions for this workflow
+permissions:
+  # Only read access to the contents is needed
+  contents: read
+  
+# Define jobs in this workflow
+jobs:
+  # Define a job for mkdocs actions
+  build:
+    # Name of the job
+    name: 'Deploy ESG MkDocs'
+    # Define the type of runner that the job will run on
+    runs-on: ubuntu
+    # Define the environment in which the job will run
+    environment: production
+
+    # Set default options for steps in this job
+    defaults:
+      run:
+        # Use the bash shell
+        shell: bash
+        
+    # Define steps for this job
+    steps:
+    # Checkout the repository to the GitHub Actions runner 
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+
+    # Setup Python environment with a specific version
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x' 
+
+    # Upgrade pip
+    - name: Set up Python
+      run: pip install --upgrade pip
+      
+    # Install the MkDocs dependencies
+    - name: Install Dependencies
+      run: |
+        pip install mkdocs-material
+        pip install mkdocs-material-extensions
+        pip install mkdocs-minify-plugin
+        
+    # Generate the site
+    - name: Build Site
+      run: mkdocs build
+
+    # Deploy the site
+    - name: Deploy to GitHub Pages
+      run: |
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        mkdocs gh-deploy
