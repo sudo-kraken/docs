@@ -22,10 +22,6 @@
   <img src="https://img.shields.io/badge/-Grafana-F46800?style=flat&logo=grafana&logoColor=white" alt="Grafana" />
   <img src="https://img.shields.io/badge/-Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white" alt="Prometheus" />
 </p>
-<p align="center">
-  <img src="https://img.shields.io/badge/-Grafana-F46800?style=flat&logo=grafana&logoColor=white" alt="Grafana" />
-  <img src="https://img.shields.io/badge/-Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white" alt="Prometheus" />
-</p>
 
 # Docs
 Documentation hub for all my repos available here: [JH Docs](https://joeharrison94.github.io/docs/)
