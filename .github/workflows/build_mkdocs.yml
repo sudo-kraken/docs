@@ -45,7 +45,7 @@ jobs:
         python-version: '3.x' 
 
     # Upgrade pip
-    - name: Set up Python
+    - name: Upgrade pip
       run: pip install --upgrade pip
       
     # Install the MkDocs dependencies
