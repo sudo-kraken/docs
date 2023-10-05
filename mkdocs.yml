@@ -34,7 +34,7 @@ theme:
     - toc.integrate
     - navigation.top
     - navigation.expand
-#    - navigation.tracking
+    - navigation.tracking
     - search.suggest
     - search.highlight
     - search.share
