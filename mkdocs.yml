@@ -5,7 +5,7 @@ copyright: Made with ❤️ by J Harrison
 
 repo_name: JoeHarrison94
 repo_url: https://github.com/Joeharrison94/terraform-gcp-ubuntu-container-ready-e2-micro-vm
-edit_uri: "Docs/"
+edit_uri: "docs/"
 
 theme:
   name: material
@@ -42,7 +42,7 @@ theme:
     - content.tabs.link
 
 extra:
-  homepage: /Docs/
+  homepage: /docs/
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/JoeHarrison94
