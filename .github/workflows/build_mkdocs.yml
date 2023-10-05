@@ -54,24 +54,14 @@ jobs:
         pip install mkdocs-material
         pip install mkdocs-material-extensions
         pip install mkdocs-minify-plugin
-        
+
     # Generate the site
     - name: Build Site
       run: mkdocs build
-
-    # Setup Git
-    - name: Setup Git
+      
+    # Deploy the site
+    - name: Deploy to GitHub Pages
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-
-    # Checkout gh-pages
-    - name: Checkout and pull from remote gh-pages
-      run: |
-        git fetch origin gh-pages:gh-pages
-        git checkout gh-pages
-        git pull origin gh-pages
-    
-    # Deploy the site
-    - name: Deploy to GitHub Pages
-      run: mkdocs gh-deploy
+        mkdocs gh-deploy
