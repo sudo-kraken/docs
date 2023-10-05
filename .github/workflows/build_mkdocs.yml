@@ -10,8 +10,8 @@ on:
       
 # Define permissions for this workflow
 permissions:
-  # Only read access to the contents is needed
-  contents: read
+  # Read and Write access to the contents is needed
+  contents: write
   
 # Define jobs in this workflow
 jobs:
@@ -59,9 +59,19 @@ jobs:
     - name: Build Site
       run: mkdocs build
 
-    # Deploy the site
-    - name: Deploy to GitHub Pages
+    # Setup Git
+    - name: Setup Git
       run: |
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
-        mkdocs gh-deploy
+
+    # Checkout gh-pages
+    - name: Checkout and pull from remote gh-pages
+      run: |
+        git fetch origin gh-pages:gh-pages
+        git checkout gh-pages
+        git pull origin gh-pages
+    
+    # Deploy the site
+    - name: Deploy to GitHub Pages
+      run: mkdocs gh-deploy
