@@ -58,7 +58,13 @@ jobs:
     # Generate the site
     - name: Build Site
       run: mkdocs build
-      
+
+    # Fetch and reset gh-pages from remote
+    - name: Prepare gh-pages
+      run: |
+        git fetch origin gh-pages:gh-pages
+        git reset --hard gh-pages
+        
     # Deploy the site
     - name: Deploy to GitHub Pages
       run: |
