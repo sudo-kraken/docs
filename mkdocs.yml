@@ -1,10 +1,10 @@
 site_name: JH Docs
-site_url: "https://joeharrison94.github.io/"
-site_description: A collection of my findings throught my home labbing experience
+site_url: "https://sudo-kraken.github.io/"
+site_description: A collection of my findings throught both my enterprise and home labbing experiences
 copyright: Made with ❤️ by J Harrison
 
-repo_name: JoeHarrison94
-repo_url: https://github.com/Joeharrison94/terraform-gcp-ubuntu-container-ready-e2-micro-vm
+repo_name: sudo-kraken
+repo_url: https://github.com/sudo-kraken/terraform-gcp-ubuntu-container-ready-e2-micro-vm
 edit_uri: "docs/"
 
 theme:
@@ -45,7 +45,7 @@ extra:
   homepage: /docs/
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/JoeHarrison94
+      link: https://github.com/sudo-kraken
   generator: false
 
 extra_css:
