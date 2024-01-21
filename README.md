@@ -25,7 +25,7 @@
 </p>
 
 # Docs
-Documentation hub for all my repos available here: [JH Docs](https://joeharrison94.github.io/docs/)
+Documentation hub for all my repos available here: [JH Docs](https://sudo-kraken.github.io/docs/)
 
 <p align="center">
   <a href="https://www.buymeacoffee.com/jharrison94">
