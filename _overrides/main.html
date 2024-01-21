@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block announce %}
+<style>
+    div[data-md-component="announce"] {
+        z-index: 10;
+    }
+
+    div[data-md-component="announce"] a {
+        color: white;
+    }
+
+    div[data-md-component="announce"] a:hover, div[data-md-component="announce"] a:focus {
+        transition: ease-in 150ms;
+        color: #ccc;
+    }
+
+    div[data-md-component="announce"] .md-banner__button {
+        color: #ccc;
+    }
+
+    div[data-md-component="announce"] .md-banner.hidden {
+        display: none;
+    }
+
+    div[data-md-component="announce"] .twemoji {
+        margin-top: 2px;
+    }
+</style>
+<button id="announce-bar-close" class="md-banner__button md-icon" aria-label="Don't show this again">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path>
+    </svg>
+</button>
+If you like my repos, please consider supporting me via <a target="_blank" href="https://www.buymeacoffee.com/jharrison94" style="vertical-align: middle;"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important; width: auto !important; vertical-align: middle;"></a>
+<script>
+    announceBarKey = 'announce-bar-closed-sponsor';
+    document.getElementById('announce-bar-close').addEventListener('click', (e) => {
+        localStorage.setItem(announceBarKey, 'true');
+        document.querySelector('div[data-md-component="announce"] .md-banner').style.display = 'none';
+    });
+    if (localStorage.getItem(announceBarKey) === 'true') {
+        document.querySelector('div[data-md-component="announce"] .md-banner').style.display = 'none';
+    }
+</script>
+{% endblock %}
