@@ -35,8 +35,8 @@ jobs:
     # Checkout the repository to the GitHub Actions runner 
     - name: Checkout
       uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GH_ACCESS }}
+#      with:
+#        token: ${{ secrets.GH_ACCESS }}
 
     # Setup Python environment with a specific version
     - name: Set up Python
