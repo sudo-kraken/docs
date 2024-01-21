@@ -1,6 +1,6 @@
 # Welcome to JH Docs
 
-I started my home labbing journey a few years ago and thought I should probably document some of my implementations....so here we are!
+I started my home labbing journey a few years ago and my enterprise career over a decade ago, so I thought it would be good to document some of my implementations....so here we are!
 
 ## Check My Tutorials:
 - [:material-google-cloud: Google Cloud Platform - Free Forever VM Setup & Configuration Using Terraform :material-terraform:](gcp-free-forever.md)
