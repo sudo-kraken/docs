@@ -81,7 +81,6 @@ plugins:
   - search
   - minify:
       minify_html: true
-  - sitemap
   
 nav:
 - "Welcome": index.md
