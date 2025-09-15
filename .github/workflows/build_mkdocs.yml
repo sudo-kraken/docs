@@ -1,67 +1,63 @@
-# Name of the workflow
 name: Build and Deploy MkDocs
 
-# Define the events that trigger the workflow
 on:
-  # Trigger the workflow when someone makes a push to the main branch
   push:
-    branches:
-      - main
-      
-# Define permissions for this workflow
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+  workflow_dispatch:
+
 permissions:
-  # Read and Write access to the contents is needed
-  contents: write
-  
-# Define jobs in this workflow
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  # Define a job for mkdocs actions
   build:
-    # Name of the job
-    name: 'Deploy JH MkDocs'
-    # Define the type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Define the environment in which the job will run
-    environment: production
-
-    # Set default options for steps in this job
-    defaults:
-      run:
-        # Use the bash shell
-        shell: bash
-        
-    # Define steps for this job
+    name: Build site
+    runs-on: ubuntu-24.04
     steps:
-    # Checkout the repository to the GitHub Actions runner 
-    - name: Checkout
-      uses: actions/checkout@v3
-#      with:
-#        token: ${{ secrets.GH_ACCESS }}
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    # Setup Python environment with a specific version
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x' 
+      # Prepare the Pages deployment
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
-    # Upgrade pip
-    - name: Upgrade pip
-      run: pip install --upgrade pip
-      
-    # Install the MkDocs dependencies
-    - name: Install Dependencies
-      run: |
-        pip install mkdocs-material
-        pip install mkdocs-material-extensions
-        pip install mkdocs-minify-plugin
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-    # Generate the site
-    - name: Build Site
-      run: mkdocs build
-       
-    # Deploy the site
-    - name: Deploy to GitHub Pages
-      run: |
-        git config user.name 'github-actions[bot]'
-        git config user.email 'github-actions[bot]@users.noreply.github.com'
-        mkdocs gh-deploy --force
+      - name: Install MkDocs & theme
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material mkdocs-material-extensions mkdocs-minify-plugin
+
+      - name: Build (fail on warnings)
+        run: mkdocs build --strict
+
+      # Publish the built site as an artifact for Pages to deploy
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
