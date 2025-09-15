@@ -30,16 +30,18 @@ jobs:
       # Prepare the Pages deployment
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-
-      - name: Install MkDocs & theme
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: docs/requirements.txt
+      
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material mkdocs-material-extensions mkdocs-minify-plugin
+          pip install -r docs/requirements.txt
 
       - name: Build (fail on warnings)
         run: mkdocs build --strict
