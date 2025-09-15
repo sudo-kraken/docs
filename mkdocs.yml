@@ -82,7 +82,7 @@ plugins:
   - minify:
       minify_html: true
   - sitemap
-
+  
 nav:
 - "Welcome": index.md
 - "Tutorials":
